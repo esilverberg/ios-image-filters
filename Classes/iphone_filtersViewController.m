@@ -50,7 +50,9 @@
 													   otherButtonTitles:
 									 NSLocalizedString(@"Posterize",@""), 
 									 NSLocalizedString(@"Saturate",@""),
+									 NSLocalizedString(@"Brightness",@""),
 									 NSLocalizedString(@"Contrast",@""),
+								     NSLocalizedString(@"Gamma",@""),
 									 nil];
 	self.actionSheetAdjustable.actionSheetStyle = UIActionSheetStyleDefault;
 	[self.actionSheetAdjustable showInView:self.view]; // show from our table view (pops up in the middle of the table)
@@ -59,15 +61,18 @@
 - (IBAction) buttonPackagedClicked:(id)sender
 {
 	// open a dialog with two custom buttons
-	self.actionSheetPackaged = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Apply Filter",@"")
-																delegate:self 
-													   cancelButtonTitle:NSLocalizedString(@"Cancel",@"") 
-												  destructiveButtonTitle:NSLocalizedString(@"Reset",@"") 
-													   otherButtonTitles:
-									 NSLocalizedString(@"Sharpen",@""), 
-									 NSLocalizedString(@"Sepia",@""),
-									 NSLocalizedString(@"Lomo",@""),
-									 nil];
+	self.actionSheetPackaged = 
+		[[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Apply Filter",@"")
+									delegate:self 
+									cancelButtonTitle:NSLocalizedString(@"Cancel",@"") 
+									destructiveButtonTitle:NSLocalizedString(@"Reset",@"") 
+									otherButtonTitles:
+									NSLocalizedString(@"Sharpen",@""), 
+									NSLocalizedString(@"Sepia",@""),
+									NSLocalizedString(@"Lomo",@""),
+									NSLocalizedString(@"Vignette",@""),
+									NSLocalizedString(@"Polaroidish",@""),
+									nil];
 	self.actionSheetPackaged.actionSheetStyle = UIActionSheetStyleDefault;
 	[self.actionSheetPackaged showInView:self.view]; // show from our table view (pops up in the middle of the table)	
 
@@ -86,8 +91,14 @@
 		case FilterSaturate:
 			self.imageView.image = [image saturate:(1+value-0.5)];			
 			break;
+		case FilterBrightness:
+			self.imageView.image = [image brightness:(1+value-0.5)];			
+			break;
 		case FilterContrast:
 			self.imageView.image = [image contrast:(1+value-0.5)];			
+			break;
+		case FilterGamma:
+			self.imageView.image = [image gamma:(1+value-0.5)];			
 			break;
 		default:
 			break;
@@ -102,6 +113,8 @@ typedef enum
 	ActionSheetPackagedOptionSharpen,
 	ActionSheetPackagedOptionSepia,
 	ActionSheetPackagedOptionLomo,
+	ActionSheetPackagedOptionVignette,
+	ActionSheetPackagedOptionPolaroidish,
 	ActionSheetPackagedOptionTotal
 } ActionSheetPackagedOptions;
 
@@ -128,6 +141,12 @@ typedef enum
 				break;
 			case ActionSheetPackagedOptionLomo:
 				self.imageView.image = [image lomo];
+				break;
+			case ActionSheetPackagedOptionVignette:
+				self.imageView.image = [image vignette];
+				break;
+			case ActionSheetPackagedOptionPolaroidish:
+				self.imageView.image = [image polaroidish];
 				break;
 			default:
 				break;

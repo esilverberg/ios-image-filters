@@ -14,7 +14,9 @@ typedef enum
 {
 	FilterPosterize = 0,
 	FilterSaturate,
+	FilterBrightness,
 	FilterContrast,
+	FilterGamma,
 	FilterTotal
 } FilterOptions;
 

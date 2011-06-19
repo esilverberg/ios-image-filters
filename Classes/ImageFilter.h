@@ -42,6 +42,7 @@ typedef NSUInteger CurveChannel;
 - (UIImage*) gaussianBlur:(NSUInteger)radius;
 - (UIImage*) vignette;
 - (UIImage*) darkVignette;
+- (UIImage*) polaroidish;
 
 /* Blend Operations */
 - (UIImage*) overlay:(UIImage*)other;

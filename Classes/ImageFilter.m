@@ -809,8 +809,8 @@ void filterAdjust(UInt8 *pixelBuf, UInt32 offset, void *context)
 	UIImage *finalImage = [UIImage imageWithCGImage:imageRef];
 	CGImageRelease(imageRef);	
 
-	UIImage *mask = [finalImage gaussianBlur:5];
-	UIImage *blurredSelf = [self gaussianBlur:5];
+	UIImage *mask = [finalImage gaussianBlur:10];
+	UIImage *blurredSelf = [self gaussianBlur:2];
 	UIImage *maskedSelf = [self mask:mask];
 	return [blurredSelf merge:maskedSelf];
 }
@@ -868,4 +868,39 @@ void filterAdjust(UInt8 *pixelBuf, UInt32 offset, void *context)
 	return [self overlay:[maskedSquare opacity:1.0]];
 }
 
+// This filter is not done...
+- (UIImage*) polaroidish
+{
+	NSArray *redPoints = [NSArray arrayWithObjects:
+					   [NSValue valueWithCGPoint:CGPointMake(0, 0)],
+					   [NSValue valueWithCGPoint:CGPointMake(93, 81)],
+					   [NSValue valueWithCGPoint:CGPointMake(247, 241)],
+						  [NSValue valueWithCGPoint:CGPointMake(255, 255)],
+					   nil];
+	NSArray *bluePoints = [NSArray arrayWithObjects:
+						  [NSValue valueWithCGPoint:CGPointMake(0, 0)],
+						  [NSValue valueWithCGPoint:CGPointMake(57, 59)],
+						  [NSValue valueWithCGPoint:CGPointMake(223, 205)],
+						  [NSValue valueWithCGPoint:CGPointMake(255, 241)],
+						  nil];
+	UIImage *image = [[self applyCurve:redPoints toChannel:CurveChannelRed] 
+			  applyCurve:bluePoints toChannel:CurveChannelBlue];
+
+	redPoints = [NSArray arrayWithObjects:
+						  [NSValue valueWithCGPoint:CGPointMake(0, 0)],
+						  [NSValue valueWithCGPoint:CGPointMake(93, 76)],
+						  [NSValue valueWithCGPoint:CGPointMake(232, 226)],
+						  [NSValue valueWithCGPoint:CGPointMake(255, 255)],
+						  nil];
+	bluePoints = [NSArray arrayWithObjects:
+						   [NSValue valueWithCGPoint:CGPointMake(0, 0)],
+						   [NSValue valueWithCGPoint:CGPointMake(57, 59)],
+						   [NSValue valueWithCGPoint:CGPointMake(220, 202)],
+						   [NSValue valueWithCGPoint:CGPointMake(255, 255)],
+						   nil];
+	image = [[image applyCurve:redPoints toChannel:CurveChannelRed] 
+			 applyCurve:bluePoints toChannel:CurveChannelBlue];
+	
+	return image;
+}
 @end
