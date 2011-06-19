@@ -48,8 +48,8 @@ How to use
 
 What it looks like
 ======================
-![Screen shot 1](/esilverberg/ios-image-filters/docs/ss1.png)
-![Screen shot 2](/esilverberg/ios-image-filters/docs/ss2.png)
+![Screen shot 1](/esilverberg/ios-image-filters/raw/master/docs/ss1.png)
+![Screen shot 2](/esilverberg/ios-image-filters/raw/master/docs/ss2.png)
 
 
 What is still broken
