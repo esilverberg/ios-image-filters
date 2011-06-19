@@ -1,0 +1,71 @@
+# Mac OS X Finder and whatnot
+.DS_Store
+
+
+# Sparkle distribution Private Key (Don't check me in!)
+dsa_priv.pem
+
+
+# XCode (and ancestors) per-user config (very noisy, and not relevant)
+*.mode1
+*.mode1v3
+*.mode2v3
+*.perspective
+*.perspectivev3
+*.pbxuser
+
+
+# Generated files
+VersionX-revision.h
+
+
+# build products
+build/
+*.[o]
+
+# Other source repository archive directories (protects when importing)
+.hg
+.svn
+CVS
+
+
+# automatic backup files
+*~.nib
+*.swp
+*~
+*(Autosaved).rtfd/
+Backup[ ]of[ ]*.pages/
+Backup[ ]of[ ]*.key/
+Backup[ ]of[ ]*.numbers/
+
+*.pyc
+*~
+.*.swp
+.svn
+tags
+.DS_Store
+Thumbs.db
+appversion.py
+scripts/scrape_data/*
+static/images/Thumbs.db
+
+Resources/Icon.png
+Resources/*/Localizable.strings
+Resources/*/Custom.strings
+Resources/Config.strings
+Resources/Config.strings
+Resources/iPhone-bg.png
+Resources/iPhone-logo.png
+Resources/iPhone-logo@2x.png
+Resources/quickedit-logo.png
+Resources/tos.html
+Resources/UserTypes.plist
+Resources/LookingFor.plist
+Resources/browse-logo.png
+
+Resources-iPad/iPad-logo.png
+Resources-iPad/iPad-bg.png
+Resources-iPad/IconPad.png
+Husband Material.xcodeproj/project.xcworkspace/*
+Husband Material.xcodeproj/xcuserdata/*
+

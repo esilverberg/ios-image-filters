@@ -1,0 +1,324 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		07878D2813AB008500E41BDD /* ImageFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 07878D2713AB008500E41BDD /* ImageFilter.m */; };
+		078791E013ABE0A600E41BDD /* BezierCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = 078791D213ABE0A600E41BDD /* BezierCurve.m */; };
+		078791E113ABE0A600E41BDD /* CatmullRomSpline.m in Sources */ = {isa = PBXBuildFile; fileRef = 078791D413ABE0A600E41BDD /* CatmullRomSpline.m */; };
+		078791E213ABE0A600E41BDD /* CubicBezierCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = 078791D713ABE0A600E41BDD /* CubicBezierCurve.m */; };
+		078791E313ABE0A600E41BDD /* LinearBezierCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = 078791D913ABE0A600E41BDD /* LinearBezierCurve.m */; };
+		078791E413ABE0A600E41BDD /* NSArray_PointArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 078791DB13ABE0A600E41BDD /* NSArray_PointArray.m */; };
+		078791E513ABE0A600E41BDD /* QuadraticBezierCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = 078791DD13ABE0A600E41BDD /* QuadraticBezierCurve.m */; };
+		078791E613ABE0A600E41BDD /* Spline.m in Sources */ = {isa = PBXBuildFile; fileRef = 078791DF13ABE0A600E41BDD /* Spline.m */; };
+		078792A913ABF0B900E41BDD /* green.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 078792A813ABF0B900E41BDD /* green.jpg */; };
+		07DF2BDC13ADAD6D00647836 /* landscape.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 07DF2BDB13ADAD6D00647836 /* landscape.jpg */; };
+		1D3623260D0F684500981E51 /* iphone_filtersAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* iphone_filtersAppDelegate.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		2899E5220DE3E06400AC0155 /* iphone_filtersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* iphone_filtersViewController.xib */; };
+		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		28D7ACF80DDB3853001CB0EB /* iphone_filtersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* iphone_filtersViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		07878D2613AB008500E41BDD /* ImageFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageFilter.h; sourceTree = "<group>"; };
+		07878D2713AB008500E41BDD /* ImageFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageFilter.m; sourceTree = "<group>"; };
+		078791D113ABE0A600E41BDD /* BezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BezierCurve.h; sourceTree = "<group>"; };
+		078791D213ABE0A600E41BDD /* BezierCurve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BezierCurve.m; sourceTree = "<group>"; };
+		078791D313ABE0A600E41BDD /* CatmullRomSpline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatmullRomSpline.h; sourceTree = "<group>"; };
+		078791D413ABE0A600E41BDD /* CatmullRomSpline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatmullRomSpline.m; sourceTree = "<group>"; };
+		078791D513ABE0A600E41BDD /* CGPointArithmetic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPointArithmetic.h; sourceTree = "<group>"; };
+		078791D613ABE0A600E41BDD /* CubicBezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CubicBezierCurve.h; sourceTree = "<group>"; };
+		078791D713ABE0A600E41BDD /* CubicBezierCurve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CubicBezierCurve.m; sourceTree = "<group>"; };
+		078791D813ABE0A600E41BDD /* LinearBezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinearBezierCurve.h; sourceTree = "<group>"; };
+		078791D913ABE0A600E41BDD /* LinearBezierCurve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinearBezierCurve.m; sourceTree = "<group>"; };
+		078791DA13ABE0A600E41BDD /* NSArray_PointArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSArray_PointArray.h; sourceTree = "<group>"; };
+		078791DB13ABE0A600E41BDD /* NSArray_PointArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSArray_PointArray.m; sourceTree = "<group>"; };
+		078791DC13ABE0A600E41BDD /* QuadraticBezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuadraticBezierCurve.h; sourceTree = "<group>"; };
+		078791DD13ABE0A600E41BDD /* QuadraticBezierCurve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuadraticBezierCurve.m; sourceTree = "<group>"; };
+		078791DE13ABE0A600E41BDD /* Spline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spline.h; sourceTree = "<group>"; };
+		078791DF13ABE0A600E41BDD /* Spline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spline.m; sourceTree = "<group>"; };
+		078792A813ABF0B900E41BDD /* green.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = green.jpg; sourceTree = "<group>"; };
+		07DF2BDB13ADAD6D00647836 /* landscape.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = landscape.jpg; sourceTree = "<group>"; };
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* iphone_filtersAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iphone_filtersAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* iphone_filtersAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iphone_filtersAppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* iphone-filters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iphone-filters.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2899E5210DE3E06400AC0155 /* iphone_filtersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = iphone_filtersViewController.xib; sourceTree = "<group>"; };
+		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		28D7ACF60DDB3853001CB0EB /* iphone_filtersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iphone_filtersViewController.h; sourceTree = "<group>"; };
+		28D7ACF70DDB3853001CB0EB /* iphone_filtersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iphone_filtersViewController.m; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* iphone_filters_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iphone_filters_Prefix.pch; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* iphone_filters-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "iphone_filters-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		078791D013ABE0A600E41BDD /* Curve */ = {
+			isa = PBXGroup;
+			children = (
+				078791D113ABE0A600E41BDD /* BezierCurve.h */,
+				078791D213ABE0A600E41BDD /* BezierCurve.m */,
+				078791D313ABE0A600E41BDD /* CatmullRomSpline.h */,
+				078791D413ABE0A600E41BDD /* CatmullRomSpline.m */,
+				078791D513ABE0A600E41BDD /* CGPointArithmetic.h */,
+				078791D613ABE0A600E41BDD /* CubicBezierCurve.h */,
+				078791D713ABE0A600E41BDD /* CubicBezierCurve.m */,
+				078791D813ABE0A600E41BDD /* LinearBezierCurve.h */,
+				078791D913ABE0A600E41BDD /* LinearBezierCurve.m */,
+				078791DA13ABE0A600E41BDD /* NSArray_PointArray.h */,
+				078791DB13ABE0A600E41BDD /* NSArray_PointArray.m */,
+				078791DC13ABE0A600E41BDD /* QuadraticBezierCurve.h */,
+				078791DD13ABE0A600E41BDD /* QuadraticBezierCurve.m */,
+				078791DE13ABE0A600E41BDD /* Spline.h */,
+				078791DF13ABE0A600E41BDD /* Spline.m */,
+			);
+			path = Curve;
+			sourceTree = "<group>";
+		};
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				078791D013ABE0A600E41BDD /* Curve */,
+				1D3623240D0F684500981E51 /* iphone_filtersAppDelegate.h */,
+				1D3623250D0F684500981E51 /* iphone_filtersAppDelegate.m */,
+				28D7ACF60DDB3853001CB0EB /* iphone_filtersViewController.h */,
+				28D7ACF70DDB3853001CB0EB /* iphone_filtersViewController.m */,
+				07878D2613AB008500E41BDD /* ImageFilter.h */,
+				07878D2713AB008500E41BDD /* ImageFilter.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* iphone-filters.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* iphone_filters_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				07DF2BDB13ADAD6D00647836 /* landscape.jpg */,
+				078792A813ABF0B900E41BDD /* green.jpg */,
+				2899E5210DE3E06400AC0155 /* iphone_filtersViewController.xib */,
+				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				8D1107310486CEB800E47090 /* iphone_filters-Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* iphone-filters */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "iphone-filters" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "iphone-filters";
+			productName = "iphone-filters";
+			productReference = 1D6058910D05DD3D006BFB54 /* iphone-filters.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "iphone-filters" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* iphone-filters */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
+				2899E5220DE3E06400AC0155 /* iphone_filtersViewController.xib in Resources */,
+				078792A913ABF0B900E41BDD /* green.jpg in Resources */,
+				07DF2BDC13ADAD6D00647836 /* landscape.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* iphone_filtersAppDelegate.m in Sources */,
+				28D7ACF80DDB3853001CB0EB /* iphone_filtersViewController.m in Sources */,
+				07878D2813AB008500E41BDD /* ImageFilter.m in Sources */,
+				078791E013ABE0A600E41BDD /* BezierCurve.m in Sources */,
+				078791E113ABE0A600E41BDD /* CatmullRomSpline.m in Sources */,
+				078791E213ABE0A600E41BDD /* CubicBezierCurve.m in Sources */,
+				078791E313ABE0A600E41BDD /* LinearBezierCurve.m in Sources */,
+				078791E413ABE0A600E41BDD /* NSArray_PointArray.m in Sources */,
+				078791E513ABE0A600E41BDD /* QuadraticBezierCurve.m in Sources */,
+				078791E613ABE0A600E41BDD /* Spline.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = iphone_filters_Prefix.pch;
+				INFOPLIST_FILE = "iphone_filters-Info.plist";
+				PRODUCT_NAME = "iphone-filters";
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = iphone_filters_Prefix.pch;
+				INFOPLIST_FILE = "iphone_filters-Info.plist";
+				PRODUCT_NAME = "iphone-filters";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "iphone-filters" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "iphone-filters" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
