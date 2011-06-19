@@ -1,4 +1,4 @@
-iphone-filters
+ios-image-filters
 =========
 
 Uh, so everyone seems to want instagram-style filters for images on iPhone. The way to do this (I think) is to examine how people have implemented equivalent filters in Photoshop and code them in objective c. Unfortunately, the imaging libraries are all geared for gaming (meaning they're totally inscrutable and make you want to cry to do simple operations. Go on, try to understand the OpenGL sample code Apple ships for image processing. I dare you.) 
