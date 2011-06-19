@@ -11,13 +11,13 @@ Copy and paste the ImageFilter.* classes into your project. It's implemented as 
 
 How to use
 ======================
-#import "ImageFilter.h"
-UIImage *image = [UIImage imageNamed:@"landscape.jpg"];
-self.imageView.image = [image sharpen];
-// Or
-self.imageView.image = [image saturate:1.5];
-// Or
-self.imageView.image = [image lomo];
+    #import "ImageFilter.h"
+    UIImage *image = [UIImage imageNamed:@"landscape.jpg"];
+    self.imageView.image = [image sharpen];
+    // Or
+    self.imageView.image = [image saturate:1.5];
+    // Or
+    self.imageView.image = [image lomo];
 
 What is still broken
 ======================
