@@ -1,9 +1,7 @@
 ios-image-filters
-=========
+======================
 
-Uh, so everyone seems to want instagram-style filters for images on iPhone. The way to do this (I think) is to examine how people have implemented equivalent filters in Photoshop and code them in objective c. Unfortunately, the imaging libraries are all geared for gaming (meaning they're totally inscrutable and make you want to cry to do simple operations. Go on, try to understand the OpenGL sample code Apple ships for image processing. I dare you.) 
-
-Inexplicably, there seem to be no photoshop-style interfaces for image processing on iOS. So, I made some. Badly. Please help me fix them. My lomo filter is OK, but could be a lot better. The basics seem to work.
+These days everyone seems to want instagram-style filters for images on iPhone. The way to do this (I think) is to examine how people have implemented equivalent filters in Photoshop and code them in objective c. Unfortunately, the imaging libraries are all geared for gaming. For non-game developers who just want simple image processing, this is overkill.
 
 It's like photoshop for the UIImage class!
 ======================
@@ -13,7 +11,7 @@ I've worked hard to mimic the photoshop color adjustment menus. Turns out these 
 
 An API just like that cool menu in Photoshop!
 
-The neat part is curves - a popular lomo filter makes extensive use of curves. Want to do a curves adjustment you saw on a blog? Just do this:
+Want to do a curves adjustment to mimic a filter you saw on a blog? Just do this:
 
     NSArray *redPoints = [NSArray arrayWithObjects:
             [NSValue valueWithCGPoint:CGPointMake(0, 0)],
@@ -30,7 +28,7 @@ The neat part is curves - a popular lomo filter makes extensive use of curves. W
     UIImage *image = [[[UIImage imageNamed:@"landscape.jpg" applyCurve:redPoints toChannel:CurveChannelRed] 
      applyCurve:bluePoints toChannel:CurveChannelBlue];
 
-The problem with my curves implementation is that I didn't use the same kind of curve algorithm as Photoshop uses. Mainly, because I don't know how, and other than the name of the curve (bicubic) all the posts and documentation I simply don't understand or cannot figure out how to port to iOS. But, the curves I use (catmull-rom) seem close enough for most things.
+The problem with my curves implementation is that I didn't use the same kind of curve algorithm as Photoshop uses. Mainly, because I don't know how, and other than the name of the curve (bicubic) all the posts and documentation I simply don't understand or cannot figure out how to port to iOS. But, the curves I use (catmull-rom) seem close enough.
 
 How to integrate
 ======================
@@ -62,6 +60,8 @@ What is still broken
 
 Other options
 =============
+I tried, but mostly failed, to understand these libraries. Simple Image Processing is too simple, and uses a CPP class to accomplish its effects, as does CImg. I find the CPP syntax ghoulish, to say the least. I stared at the GLImageProcessing code for hours, and still don't understand what's going on. Guess I should have taken CS244a...
+
 - Simple Image Processing: http://code.google.com/p/simple-iphone-image-processing/
 - GLImageProcessing: http://developer.apple.com/library/ios/#samplecode/GLImageProcessing/Introduction/Intro.html
 - CImg: http://cimg.sourceforge.net/reference/group__cimg__tutorial.html 
