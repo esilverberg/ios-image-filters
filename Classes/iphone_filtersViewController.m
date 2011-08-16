@@ -43,7 +43,7 @@
 - (IBAction) buttonAdjustableClicked:(id)sender
 {
 	// open a dialog with two custom buttons
-	self.actionSheetAdjustable = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Set Filter",@"")
+	self.actionSheetAdjustable = [[[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Set Filter",@"")
 																delegate:self 
 													   cancelButtonTitle:NSLocalizedString(@"Cancel",@"") 
 												  destructiveButtonTitle:nil
@@ -53,7 +53,7 @@
 									 NSLocalizedString(@"Brightness",@""),
 									 NSLocalizedString(@"Contrast",@""),
 								     NSLocalizedString(@"Gamma",@""),
-									 nil];
+									 nil] autorelease];
 	self.actionSheetAdjustable.actionSheetStyle = UIActionSheetStyleDefault;
 	[self.actionSheetAdjustable showInView:self.view]; // show from our table view (pops up in the middle of the table)
 }
@@ -62,7 +62,7 @@
 {
 	// open a dialog with two custom buttons
 	self.actionSheetPackaged = 
-		[[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Apply Filter",@"")
+		[[[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Apply Filter",@"")
 									delegate:self 
 									cancelButtonTitle:NSLocalizedString(@"Cancel",@"") 
 									destructiveButtonTitle:NSLocalizedString(@"Reset",@"") 
@@ -72,7 +72,7 @@
 									NSLocalizedString(@"Lomo",@""),
 									NSLocalizedString(@"Vignette",@""),
 									NSLocalizedString(@"Polaroidish",@""),
-									nil];
+									nil] autorelease];
 	self.actionSheetPackaged.actionSheetStyle = UIActionSheetStyleDefault;
 	[self.actionSheetPackaged showInView:self.view]; // show from our table view (pops up in the middle of the table)	
 
