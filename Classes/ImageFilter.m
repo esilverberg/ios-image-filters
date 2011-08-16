@@ -47,7 +47,8 @@ typedef void (*FilterBlendCallback)(UInt8 *pixelBuf, UInt8 *pixelBlendBuf, UInt3
 	CGImageRef imageRef = CGBitmapContextCreateImage(ctx);  
 	CGContextRelease(ctx);
 	UIImage *finalImage = [UIImage imageWithCGImage:imageRef];
-	CGImageRelease(imageRef);	
+	CGImageRelease(imageRef);
+	CFRelease(m_DataRef);
 	return finalImage;
 	
 }
@@ -291,7 +292,9 @@ void filterBias(UInt8 *pixelBuf, UInt32 offset, void *context)
 	CGImageRef imageRef = CGBitmapContextCreateImage(ctx);  
 	CGContextRelease(ctx);
 	UIImage *finalImage = [UIImage imageWithCGImage:imageRef];
-	CGImageRelease(imageRef);	
+	CGImageRelease(imageRef);
+    CFRelease(m_DataRef);
+	CFRelease(m_OtherDataRef);
 	return finalImage;
 	
 }
@@ -437,8 +440,8 @@ double valueGivenCurve(CurveEquation equation, double xValue)
 	assert(xValue <= 255);
 	assert(xValue >= 0);
 	
-	CGPoint point1;
-	CGPoint point2;
+	CGPoint point1 = CGPointZero;
+	CGPoint point2 = CGPointZero;
 	NSInteger idx = 0;
 	
 	for (idx = 0; idx < equation.length; idx++)
@@ -648,7 +651,9 @@ void filterAdjust(UInt8 *pixelBuf, UInt32 offset, void *context)
 	CGImageRef imageRef = CGBitmapContextCreateImage(ctx);  
 	CGContextRelease(ctx);
 	UIImage *finalImage = [UIImage imageWithCGImage:imageRef];
-	CGImageRelease(imageRef);	
+	CGImageRelease(imageRef);
+	CFRelease(m_DataRef);
+    CFRelease(m_OutDataRef);
 	return finalImage;
 	
 }
@@ -807,7 +812,8 @@ void filterAdjust(UInt8 *pixelBuf, UInt32 offset, void *context)
 	CGImageRef imageRef = CGBitmapContextCreateImage(ctx);  
 	CGContextRelease(ctx);
 	UIImage *finalImage = [UIImage imageWithCGImage:imageRef];
-	CGImageRelease(imageRef);	
+	CGImageRelease(imageRef);
+	CFRelease(m_DataRef);
 
 	UIImage *mask = [finalImage gaussianBlur:10];
 	UIImage *blurredSelf = [self gaussianBlur:2];
@@ -863,7 +869,7 @@ void filterAdjust(UInt8 *pixelBuf, UInt32 offset, void *context)
 	CGContextRelease(ctx);
 	UIImage *blackSquare = [UIImage imageWithCGImage:imageRef];
 	CGImageRelease(imageRef);	
-		
+	CFRelease(m_DataRef);	
 	UIImage *maskedSquare = [blackSquare mask:mask];
 	return [self overlay:[maskedSquare opacity:1.0]];
 }
