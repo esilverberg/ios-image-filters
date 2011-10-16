@@ -208,6 +208,21 @@ void filterBias(UInt8 *pixelBuf, UInt32 offset, void *context)
 	pixelBuf[b] = SAFECOLOR((blue * calcBias(((double)blue / 255.0f), val)));
 }
 
+void filterInvert(UInt8 *pixelBuf, UInt32 offset, void *context)
+{	
+	int r = offset;
+	int g = offset+1;
+	int b = offset+2;
+	
+	int red = pixelBuf[r];
+	int green = pixelBuf[g];
+	int blue = pixelBuf[b];
+	
+	pixelBuf[r] = SAFECOLOR(255-red);
+	pixelBuf[g] = SAFECOLOR(255-green);
+	pixelBuf[b] = SAFECOLOR(255-blue);
+}
+
 #pragma mark Filters
 -(UIImage*)greyscale 
 {
@@ -252,6 +267,11 @@ void filterBias(UInt8 *pixelBuf, UInt32 offset, void *context)
 - (UIImage*)bias:(double)amount
 {
 	return [self applyFilter:filterBias context:&amount];	
+}
+
+- (UIImage*)invert
+{
+	return [self applyFilter:filterInvert context:nil];
 }
 
 #pragma mark -

@@ -72,6 +72,7 @@
 									NSLocalizedString(@"Lomo",@""),
 									NSLocalizedString(@"Vignette",@""),
 									NSLocalizedString(@"Polaroidish",@""),
+									NSLocalizedString(@"Invert",@""),
 									nil] autorelease];
 	self.actionSheetPackaged.actionSheetStyle = UIActionSheetStyleDefault;
 	[self.actionSheetPackaged showInView:self.view]; // show from our table view (pops up in the middle of the table)	
@@ -115,6 +116,7 @@ typedef enum
 	ActionSheetPackagedOptionLomo,
 	ActionSheetPackagedOptionVignette,
 	ActionSheetPackagedOptionPolaroidish,
+    ActionSheetPackagedOptionInvert,
 	ActionSheetPackagedOptionTotal
 } ActionSheetPackagedOptions;
 
@@ -148,6 +150,9 @@ typedef enum
 			case ActionSheetPackagedOptionPolaroidish:
 				self.imageView.image = [image polaroidish];
 				break;
+			case ActionSheetPackagedOptionInvert:
+				self.imageView.image = [image invert];
+				break;                
 			default:
 				break;
 		}
