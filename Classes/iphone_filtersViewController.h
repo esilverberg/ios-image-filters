@@ -17,6 +17,7 @@ typedef enum
 	FilterBrightness,
 	FilterContrast,
 	FilterGamma,
+    FilterInvert,
 	FilterTotal
 } FilterOptions;
 
