@@ -7,11 +7,37 @@
 //
 //  Licensed under the MIT License.
 //
+//  Some filters in the file are licensed under the ImageMagick License (the "License"); you may not use
+//  this file except in compliance with the License.  You may obtain a copy
+//  of the License at
+// 
+//  http://www.imagemagick.org/script/license.php
+//  
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+//  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+//  License for the specific language governing permissions and limitations
+//  under the License.
+//
+//  Original ImageMagick filters source code is found at:
+//  http://www.google.com/codesearch#I0cABDTB4TA/pub/FreeBSD/ports/distfiles/ImageMagick-6.3.2-0.tar.bz2%7Cqy9T8VaIuJE/ImageMagick-6.3.2/magick/effect.c
+//
 
 #include <math.h>
 #import "ImageFilter.h"
 #import "CatmullRomSpline.h"
 
+/* These constants are used by ImageMagick */
+typedef unsigned char Quantum;
+typedef double MagickRealType;
+
+#define RoundToQuantum(quantum)  ClampToQuantum(quantum)
+#define ScaleCharToQuantum(value)  ((Quantum) (value))
+#define SigmaGaussian  ScaleCharToQuantum(4)
+#define TauGaussian  ScaleCharToQuantum(20)
+#define QuantumRange  ((Quantum) 65535)
+
+/* These are our own constants */
 #define SAFECOLOR(color) MIN(255,MAX(0,color))
 
 typedef void (*FilterCallback)(UInt8 *pixelBuf, UInt32 offset, void *context);
@@ -223,10 +249,38 @@ void filterInvert(UInt8 *pixelBuf, UInt32 offset, void *context)
 	pixelBuf[b] = SAFECOLOR(255-blue);
 }
 
+//
+// Noise filter was adapted from ImageMagick
+//
+static inline Quantum ClampToQuantum(const MagickRealType value)
+{
+	if (value <= 0.0)
+		return((Quantum) 0);
+	if (value >= (MagickRealType) QuantumRange)
+		return((Quantum) QuantumRange);
+	return((Quantum) (value+0.5));
+}
+
+static inline double RandBetweenZeroAndOne() 
+{
+	double value = arc4random() % 1000000;
+	value = value / 1000000;
+	return value;
+}	
+
+static inline Quantum GenerateGaussianNoise(double alpha, const Quantum pixel)
+{	
+	double beta = RandBetweenZeroAndOne();
+	double sigma = sqrt(-2.0*log((double) alpha))*cos((double) (2.0*M_PI*beta));
+	double tau = sqrt(-2.0*log((double) alpha))*sin((double) (2.0*M_PI*beta));
+	double noise = (MagickRealType) pixel+sqrt((double) pixel)*SigmaGaussian*sigma+TauGaussian*tau;
+
+	return RoundToQuantum(noise);
+}	
+
 void filterNoise(UInt8 *pixelBuf, UInt32 offset, void *context)
 {	
-    double val = *((double*)context);
-    int valInt = (int) (val * 56);  //255 should be real value, but it seems too much scale it to 56
+	double alpha = 1.0 - *((double*)context);
        
 	int r = offset;
 	int g = offset+1;
@@ -235,18 +289,10 @@ void filterNoise(UInt8 *pixelBuf, UInt32 offset, void *context)
 	int red = pixelBuf[r];
 	int green = pixelBuf[g];
 	int blue = pixelBuf[b];
-	    
-    int ran = arc4random() % (valInt + 1);
-    ran = ran + 1;
-    int sign = 1;
-    if(ran%2 == 0)
-    {
-        sign = sign * (-1);
-    }
-    //NSLog(@"random %d",ran);
-	pixelBuf[r] = SAFECOLOR(red+((arc4random() % ran)*sign));
-	pixelBuf[g] = SAFECOLOR(green+((arc4random() % ran)*sign));
-	pixelBuf[b] = SAFECOLOR(blue+((arc4random() % ran)*sign));
+	   	
+	pixelBuf[r] = GenerateGaussianNoise(alpha, red);
+	pixelBuf[g] = GenerateGaussianNoise(alpha, green);
+	pixelBuf[b] = GenerateGaussianNoise(alpha, blue);
 }
 
 #pragma mark Filters
