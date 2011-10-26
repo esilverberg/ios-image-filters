@@ -70,3 +70,5 @@ License
 =======
 MIT License, where applicable. I borrowed code from this project: http://sourceforge.net/projects/curve/files/ , which also indicates it is MIT-licensed. 
 http://en.wikipedia.org/wiki/MIT_License
+
+There is also now code adapted from ImageMagick, whose license may be found at: http://www.imagemagick.org/script/license.php
