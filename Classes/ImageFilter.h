@@ -31,6 +31,7 @@ typedef NSUInteger CurveChannel;
 - (UIImage*) contrast:(double)amount;
 - (UIImage*) bias:(double)amount;
 - (UIImage*) invert;
+- (UIImage*)noise:(double)amount;
 
 /* Color Correction */
 - (UIImage*) levels:(NSInteger)black mid:(NSInteger)mid white:(NSInteger)white;

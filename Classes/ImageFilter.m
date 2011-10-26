@@ -223,6 +223,32 @@ void filterInvert(UInt8 *pixelBuf, UInt32 offset, void *context)
 	pixelBuf[b] = SAFECOLOR(255-blue);
 }
 
+void filterNoise(UInt8 *pixelBuf, UInt32 offset, void *context)
+{	
+    double val = *((double*)context);
+    int valInt = (int) (val * 56);  //255 should be real value, but it seems too much scale it to 56
+       
+	int r = offset;
+	int g = offset+1;
+	int b = offset+2;
+	
+	int red = pixelBuf[r];
+	int green = pixelBuf[g];
+	int blue = pixelBuf[b];
+	    
+    int ran = arc4random() % (valInt + 1);
+    ran = ran + 1;
+    int sign = 1;
+    if(ran%2 == 0)
+    {
+        sign = sign * (-1);
+    }
+    //NSLog(@"random %d",ran);
+	pixelBuf[r] = SAFECOLOR(red+((arc4random() % ran)*sign));
+	pixelBuf[g] = SAFECOLOR(green+((arc4random() % ran)*sign));
+	pixelBuf[b] = SAFECOLOR(blue+((arc4random() % ran)*sign));
+}
+
 #pragma mark Filters
 -(UIImage*)greyscale 
 {
@@ -272,6 +298,11 @@ void filterInvert(UInt8 *pixelBuf, UInt32 offset, void *context)
 - (UIImage*)invert
 {
 	return [self applyFilter:filterInvert context:nil];
+}
+
+- (UIImage*)noise:(double)amount
+{
+	return [self applyFilter:filterNoise context:&amount];
 }
 
 #pragma mark -
