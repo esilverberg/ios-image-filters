@@ -53,6 +53,7 @@
 									 NSLocalizedString(@"Brightness",@""),
 									 NSLocalizedString(@"Contrast",@""),
 								     NSLocalizedString(@"Gamma",@""),
+								     NSLocalizedString(@"Noise",@""),                                   
 									 nil] autorelease];
 	self.actionSheetAdjustable.actionSheetStyle = UIActionSheetStyleDefault;
 	[self.actionSheetAdjustable showInView:self.view]; // show from our table view (pops up in the middle of the table)
@@ -101,6 +102,9 @@
 		case FilterGamma:
 			self.imageView.image = [image gamma:(1+value-0.5)];			
 			break;
+		case FilterNoise:
+			self.imageView.image = [image noise:value];
+			break;            
 		default:
 			break;
 	}
