@@ -115,6 +115,7 @@ void filterSepia(UInt8 *pixelBuf, UInt32 offset, void *context)
 void filterPosterize(UInt8 *pixelBuf, UInt32 offset, void *context)
 {
 	int levels = *((int*)context);
+	if (levels == 0) levels = 1; // avoid divide by zero
 	int step = 255 / levels;
 	
 	int r = offset;
