@@ -62,6 +62,9 @@ Other options
 =============
 I tried, but mostly failed, to understand these libraries. Simple Image Processing is too simple, and uses a CPP class to accomplish its effects, as does CImg. I find the CPP syntax ghoulish, to say the least. I stared at the GLImageProcessing code for hours, and still don't understand what's going on. Guess I should have taken CS244a...
 
+UPDATE: Core image filters in iOS5 are probably what you want to use going forward, though they are not backwards-compatible with iOS4 or earlier. 
+
+- Core Image Filters: http://developer.apple.com/library/mac/#documentation/graphicsimaging/reference/CoreImageFilterReference/Reference/reference.html
 - Simple Image Processing: http://code.google.com/p/simple-iphone-image-processing/
 - GLImageProcessing: http://developer.apple.com/library/ios/#samplecode/GLImageProcessing/Introduction/Intro.html
 - CImg: http://cimg.sourceforge.net/reference/group__cimg__tutorial.html 
