@@ -51,6 +51,35 @@ typedef void (*FilterBlendCallback)(UInt8 *pixelBuf, UInt8 *pixelBlendBuf, UInt3
 - (UIImage*) applyFilter:(FilterCallback)filter context:(void*)context
 {
 	CGImageRef inImage = self.CGImage;
+    size_t width = CGImageGetWidth(inImage);
+    size_t height = CGImageGetHeight(inImage);
+    size_t bits = CGImageGetBitsPerComponent(inImage);
+    size_t bitsPerRow = CGImageGetBytesPerRow(inImage);
+    CGColorSpaceRef colorSpace = CGImageGetColorSpace(inImage);
+    int alphaInfo = CGImageGetAlphaInfo(inImage);
+    
+    if (alphaInfo != kCGImageAlphaPremultipliedLast &&
+        alphaInfo != kCGImageAlphaNoneSkipLast) {
+        if (alphaInfo == kCGImageAlphaNone ||
+            alphaInfo == kCGImageAlphaNoneSkipFirst) {
+            alphaInfo = kCGImageAlphaNoneSkipLast;
+        }else {
+            alphaInfo = kCGImageAlphaPremultipliedLast;
+        }
+        CGContextRef context = CGBitmapContextCreate(NULL,
+                                                     width,
+                                                     height,
+                                                     bits,
+                                                     bitsPerRow,
+                                                     colorSpace,
+                                                     alphaInfo);
+        CGContextDrawImage(context, CGRectMake(0, 0, width, height), inImage);
+        inImage = CGBitmapContextCreateImage(context);
+        CGContextRelease(context);
+    }else {
+        CGImageRetain(inImage);
+    }
+    
 	CFDataRef m_DataRef = CGDataProviderCopyData(CGImageGetDataProvider(inImage));  
 	UInt8 * m_PixelBuf = (UInt8 *) CFDataGetBytePtr(m_DataRef);  
 	
@@ -59,20 +88,23 @@ typedef void (*FilterBlendCallback)(UInt8 *pixelBuf, UInt8 *pixelBlendBuf, UInt3
 	for (int i=0; i<length; i+=4)
 	{
 		filter(m_PixelBuf,i,context);
-	}  
+	}
+    CGImageRelease(inImage);
 	
 	CGContextRef ctx = CGBitmapContextCreate(m_PixelBuf,  
-											 CGImageGetWidth(inImage),  
-											 CGImageGetHeight(inImage),  
-											 CGImageGetBitsPerComponent(inImage),
-											 CGImageGetBytesPerRow(inImage),  
-											 CGImageGetColorSpace(inImage),  
-											 CGImageGetBitmapInfo(inImage) 
+											 width,
+											 height,
+											 bits,
+											 bitsPerRow,
+											 colorSpace,
+											 alphaInfo
 											 ); 
 	
 	CGImageRef imageRef = CGBitmapContextCreateImage(ctx);  
 	CGContextRelease(ctx);
-	UIImage *finalImage = [UIImage imageWithCGImage:imageRef];
+	UIImage *finalImage = [UIImage imageWithCGImage:imageRef
+                                              scale:self.scale
+                                        orientation:self.imageOrientation];
 	CGImageRelease(imageRef);
 	CFRelease(m_DataRef);
 	return finalImage;
@@ -358,6 +390,37 @@ void filterNoise(UInt8 *pixelBuf, UInt32 offset, void *context)
 - (UIImage*) applyBlendFilter:(FilterBlendCallback)filter other:(UIImage*)other context:(void*)context
 {
 	CGImageRef inImage = self.CGImage;
+    
+    
+    size_t width = CGImageGetWidth(inImage);
+    size_t height = CGImageGetHeight(inImage);
+    size_t bits = CGImageGetBitsPerComponent(inImage);
+    size_t bitsPerRow = CGImageGetBytesPerRow(inImage);
+    CGColorSpaceRef colorSpace = CGImageGetColorSpace(inImage);
+    int alphaInfo = CGImageGetAlphaInfo(inImage);
+    
+    if (alphaInfo != kCGImageAlphaPremultipliedLast ||
+        alphaInfo != kCGImageAlphaNoneSkipLast) {
+        if (alphaInfo == kCGImageAlphaNone ||
+            alphaInfo == kCGImageAlphaNoneSkipFirst) {
+            alphaInfo = kCGImageAlphaNoneSkipLast;
+        }else {
+            alphaInfo = kCGImageAlphaPremultipliedLast;
+        }
+        CGContextRef context = CGBitmapContextCreate(NULL,
+                                                     width,
+                                                     height,
+                                                     bits,
+                                                     bitsPerRow,
+                                                     colorSpace,
+                                                     alphaInfo);
+        CGContextDrawImage(context, CGRectMake(0, 0, width, height), inImage);
+        inImage = CGBitmapContextCreateImage(context);
+        CGContextRelease(context);
+    }else {
+        CGImageRetain(inImage);
+    }
+    
 	CFDataRef m_DataRef = CGDataProviderCopyData(CGImageGetDataProvider(inImage));  
 	UInt8 * m_PixelBuf = (UInt8 *) CFDataGetBytePtr(m_DataRef);  	
 	
@@ -376,16 +439,18 @@ void filterNoise(UInt8 *pixelBuf, UInt32 offset, void *context)
 			int index = (i*w*4) + (j*4);
 			filter(m_PixelBuf,m_OtherPixelBuf,index,context);			
 		}
-	}  
+	}
+    
+    CGImageRelease(inImage);
 	
-	CGContextRef ctx = CGBitmapContextCreate(m_PixelBuf,  
-											 CGImageGetWidth(inImage),  
-											 CGImageGetHeight(inImage),  
-											 CGImageGetBitsPerComponent(inImage),
-											 CGImageGetBytesPerRow(inImage),  
-											 CGImageGetColorSpace(inImage),  
-											 CGImageGetBitmapInfo(inImage) 
-											 ); 
+	CGContextRef ctx = CGBitmapContextCreate(m_PixelBuf,
+											 width,
+											 height,
+											 bits,
+											 bitsPerRow,
+											 colorSpace,
+											 alphaInfo
+											 );
 	
 	CGImageRef imageRef = CGBitmapContextCreateImage(ctx);  
 	CGContextRelease(ctx);
