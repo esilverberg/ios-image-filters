@@ -84,6 +84,7 @@ typedef void (*FilterBlendCallback)(UInt8 *pixelBuf, UInt8 *pixelBlendBuf, UInt3
 	int length = CFDataGetLength(m_DataRef);
 	CFMutableDataRef m_DataRefEdit = CFDataCreateMutableCopy(NULL,length,m_DataRef);
     UInt8 * m_PixelBuf = (UInt8 *) CFDataGetMutableBytePtr(m_DataRefEdit);
+    CFRelease(m_DataRefEdit);
 
 	for (int i=0; i<length; i+=4)
 	{
@@ -425,6 +426,7 @@ void filterNoise(UInt8 *pixelBuf, UInt32 offset, void *context)
 	int length = CFDataGetLength(m_DataRef);
 	CFMutableDataRef m_DataRefEdit = CFDataCreateMutableCopy(NULL,length,m_DataRef);
     UInt8 * m_PixelBuf = (UInt8 *) CFDataGetMutableBytePtr(m_DataRefEdit);
+    CFRelease(m_DataRefEdit);
 	
 	CGImageRef otherImage = other.CGImage;
 	CFDataRef m_OtherDataRef = CGDataProviderCopyData(CGImageGetDataProvider(otherImage));  
@@ -773,10 +775,12 @@ void filterAdjust(UInt8 *pixelBuf, UInt32 offset, void *context)
 	int length = CFDataGetLength(m_DataRef);
 	CFMutableDataRef m_DataRefEdit = CFDataCreateMutableCopy(NULL,length,m_DataRef);
     UInt8 * m_PixelBuf = (UInt8 *) CFDataGetMutableBytePtr(m_DataRefEdit);
+    CFRelease(m_DataRefEdit);
 
     int outputLength = CFDataGetLength(m_OutDataRef);
 	CFMutableDataRef m_OutDataRefEdit = CFDataCreateMutableCopy(NULL,outputLength,m_DataRef);
     UInt8 * m_OutPixelBuf = (UInt8 *) CFDataGetMutableBytePtr(m_OutDataRefEdit);
+    CFRelease(m_OutDataRefEdit);
 	
 	int h = CGImageGetHeight(inImage);
 	int w = CGImageGetWidth(inImage);
@@ -961,6 +965,7 @@ void filterAdjust(UInt8 *pixelBuf, UInt32 offset, void *context)
 	int length = CFDataGetLength(m_DataRef);
 	CFMutableDataRef m_DataRefEdit = CFDataCreateMutableCopy(NULL,length,m_DataRef);
     UInt8 * m_PixelBuf = (UInt8 *) CFDataGetMutableBytePtr(m_DataRefEdit);
+    CFRelease(m_DataRefEdit);
 	memset(m_PixelBuf,0,length);
 	
 	CGContextRef ctx = CGBitmapContextCreate(m_PixelBuf,  
@@ -1000,6 +1005,7 @@ void filterAdjust(UInt8 *pixelBuf, UInt32 offset, void *context)
 	int length = CFDataGetLength(m_DataRef);
 	CFMutableDataRef m_DataRefEdit = CFDataCreateMutableCopy(NULL,length,m_DataRef);
     UInt8 * m_PixelBuf = (UInt8 *) CFDataGetMutableBytePtr(m_DataRefEdit);
+    CFRelease(m_DataRefEdit);
 	memset(m_PixelBuf,0,length);
 	
 	CGContextRef ctx = CGBitmapContextCreate(m_PixelBuf,  
