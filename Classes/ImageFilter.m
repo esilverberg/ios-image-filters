@@ -81,10 +81,10 @@ typedef void (*FilterBlendCallback)(UInt8 *pixelBuf, UInt8 *pixelBlendBuf, UInt3
     }
     
 	CFDataRef m_DataRef = CGDataProviderCopyData(CGImageGetDataProvider(inImage));  
-	UInt8 * m_PixelBuf = (UInt8 *) CFDataGetBytePtr(m_DataRef);  
-	
 	int length = CFDataGetLength(m_DataRef);
-	
+	CFMutableDataRef m_DataRefEdit = CFDataCreateMutableCopy(NULL,length,m_DataRef);
+    UInt8 * m_PixelBuf = (UInt8 *) CFDataGetMutableBytePtr(m_DataRefEdit);
+
 	for (int i=0; i<length; i+=4)
 	{
 		filter(m_PixelBuf,i,context);
@@ -422,7 +422,9 @@ void filterNoise(UInt8 *pixelBuf, UInt32 offset, void *context)
     }
     
 	CFDataRef m_DataRef = CGDataProviderCopyData(CGImageGetDataProvider(inImage));  
-	UInt8 * m_PixelBuf = (UInt8 *) CFDataGetBytePtr(m_DataRef);  	
+	int length = CFDataGetLength(m_DataRef);
+	CFMutableDataRef m_DataRefEdit = CFDataCreateMutableCopy(NULL,length,m_DataRef);
+    UInt8 * m_PixelBuf = (UInt8 *) CFDataGetMutableBytePtr(m_DataRefEdit);
 	
 	CGImageRef otherImage = other.CGImage;
 	CFDataRef m_OtherDataRef = CGDataProviderCopyData(CGImageGetDataProvider(otherImage));  
@@ -767,8 +769,14 @@ void filterAdjust(UInt8 *pixelBuf, UInt32 offset, void *context)
 	CGImageRef inImage = self.CGImage;
 	CFDataRef m_DataRef = CGDataProviderCopyData(CGImageGetDataProvider(inImage));  
 	CFDataRef m_OutDataRef = CGDataProviderCopyData(CGImageGetDataProvider(inImage));  
-	UInt8 * m_PixelBuf = (UInt8 *) CFDataGetBytePtr(m_DataRef);  
-	UInt8 * m_OutPixelBuf = (UInt8 *) CFDataGetBytePtr(m_OutDataRef);  
+
+	int length = CFDataGetLength(m_DataRef);
+	CFMutableDataRef m_DataRefEdit = CFDataCreateMutableCopy(NULL,length,m_DataRef);
+    UInt8 * m_PixelBuf = (UInt8 *) CFDataGetMutableBytePtr(m_DataRefEdit);
+
+    int outputLength = CFDataGetLength(m_OutDataRef);
+	CFMutableDataRef m_OutDataRefEdit = CFDataCreateMutableCopy(NULL,outputLength,m_DataRef);
+    UInt8 * m_OutPixelBuf = (UInt8 *) CFDataGetMutableBytePtr(m_OutDataRefEdit);
 	
 	int h = CGImageGetHeight(inImage);
 	int w = CGImageGetWidth(inImage);
@@ -950,8 +958,9 @@ void filterAdjust(UInt8 *pixelBuf, UInt32 offset, void *context)
 {
 	CGImageRef inImage = self.CGImage;
 	CFDataRef m_DataRef = CGDataProviderCopyData(CGImageGetDataProvider(inImage));  
-	UInt8 * m_PixelBuf = (UInt8 *) CFDataGetBytePtr(m_DataRef);  	
 	int length = CFDataGetLength(m_DataRef);
+	CFMutableDataRef m_DataRefEdit = CFDataCreateMutableCopy(NULL,length,m_DataRef);
+    UInt8 * m_PixelBuf = (UInt8 *) CFDataGetMutableBytePtr(m_DataRefEdit);
 	memset(m_PixelBuf,0,length);
 	
 	CGContextRef ctx = CGBitmapContextCreate(m_PixelBuf,  
@@ -988,8 +997,9 @@ void filterAdjust(UInt8 *pixelBuf, UInt32 offset, void *context)
 {
 	CGImageRef inImage = self.CGImage;
 	CFDataRef m_DataRef = CGDataProviderCopyData(CGImageGetDataProvider(inImage));  
-	UInt8 * m_PixelBuf = (UInt8 *) CFDataGetBytePtr(m_DataRef);  	
 	int length = CFDataGetLength(m_DataRef);
+	CFMutableDataRef m_DataRefEdit = CFDataCreateMutableCopy(NULL,length,m_DataRef);
+    UInt8 * m_PixelBuf = (UInt8 *) CFDataGetMutableBytePtr(m_DataRefEdit);
 	memset(m_PixelBuf,0,length);
 	
 	CGContextRef ctx = CGBitmapContextCreate(m_PixelBuf,  
