@@ -433,7 +433,7 @@ void filterNoise(UInt8 *pixelBuf, UInt32 offset, void *context)
 	int otherLength = CFDataGetLength(m_OtherDataRef);
 	CFMutableDataRef m_OtherDataRefEdit = CFDataCreateMutableCopy(NULL,otherLength,m_OtherDataRef);
 	CFRelease(m_OtherDataRef);
-	UInt8 * m_OtherPixelBuf = (UInt8 *) CFDataGetBytePtr(m_OtherDataRef);  	
+	UInt8 * m_OtherPixelBuf = (UInt8 *) CFDataGetBytePtr(m_OtherDataRefEdit);  	
 	
 	int h = self.size.height;
 	int w = self.size.width;
@@ -781,7 +781,7 @@ void filterAdjust(UInt8 *pixelBuf, UInt32 offset, void *context)
     UInt8 * m_PixelBuf = (UInt8 *) CFDataGetMutableBytePtr(m_DataRefEdit);
 
     int outputLength = CFDataGetLength(m_OutDataRef);
-	CFMutableDataRef m_OutDataRefEdit = CFDataCreateMutableCopy(NULL,outputLength,m_DataRef);
+	CFMutableDataRef m_OutDataRefEdit = CFDataCreateMutableCopy(NULL,outputLength,m_OutDataRef);
     CFRelease(m_OutDataRef);
     UInt8 * m_OutPixelBuf = (UInt8 *) CFDataGetMutableBytePtr(m_OutDataRefEdit);
 	
